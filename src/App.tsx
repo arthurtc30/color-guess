@@ -58,7 +58,44 @@ function App() {
 
   return (
     <div className="App">
-      <div className="result">
+      <div className="header">
+        <div className="title">
+          ColorGuess
+        </div>
+        <div className="subtitle">
+          Guess the HEX color!
+        </div>
+      </div>
+      <div>
+        <div className="guess-me" style={{ backgroundColor: `#${color}` }}>
+          
+          </div>
+            {options.length ? 
+              <div className="options">
+                {options.map((o) => {
+                  return (
+                    <Button 
+                      variant="primary"
+                      onClick={() => {
+                        if (o === color) {
+                          setResult(1);
+                          setColor(getRandomColor());
+                          return;
+                        }
+    
+                        setResult(0);
+                      }}
+                    >
+                      #{o}
+                    </Button>
+                  )
+                })}
+              </div>
+            : (
+              <div className="options">Carregando...</div>
+            )}
+        </div>
+        <div className="result">
         {result !== -1 && (
           result === 1 ? (
             <span className="right">Right!</span>
@@ -66,42 +103,6 @@ function App() {
             <span className="wrong">Wrong...</span>
           ))}
       </div>
-      <div className="guess-me" style={{ backgroundColor: `#${color}` }}>
-        
-      </div>
-        {options.length ? 
-          <div className="options">
-            {options.map((o) => {
-              return (
-                <Button 
-                  variant="light"
-                  onClick={() => {
-                    if (o === color) {
-                      setResult(1);
-                      setColor(getRandomColor());
-                      return;
-                    }
-
-                    setResult(0);
-                  }}
-                >
-                  #{o}
-                </Button>
-              )
-            })}
-          </div>
-         : (
-          <div className="options">Carregando...</div>
-        )}
-      <Button 
-        onClick={() => {
-          setColor(getRandomColor())
-          setResult(-1);
-        }}
-        variant="light"
-      >
-        Try another color
-      </Button>
     </div>
   );
 }

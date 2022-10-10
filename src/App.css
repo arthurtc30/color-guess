@@ -1,16 +1,22 @@
 .App {
   display: flex;
-  height: 100%;
+  height: 80%;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin-top: -40px;
+  width: 400px;
+  background-color: rgba( 31, 38, 135, 0.3 );
+  border-radius: 10px;
 }
 
 .guess-me {
   width: 350px;
   height: 250px;
-  background-color: #000000;
+
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.35 );
+  backdrop-filter: blur( 17.5px );
+  -webkit-backdrop-filter: blur( 17.5px );
+  border-radius: 10px;
 }
 
 .options {
@@ -26,12 +32,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 40px;
+  margin-top: 30px;
+  height: 50px;
   width: 350px;
 }
 
 .right, .wrong {
-  font-size: 20px;
+  font-size: 24px;
 }
 
 .right {
@@ -40,4 +47,25 @@
 
 .wrong {
   color:rgb(230, 103, 103);
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  height: 20%;
+}
+
+.title, .subtitle {
+  display: flex;
+  justify-content: center;
+  width: 350px;
+}
+
+.title {
+  font-style: italic;
+  font-size: 48px;
+}
+
+.subtitle {
+  font-size: 22px;
 }
