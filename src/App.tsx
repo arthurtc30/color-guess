@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button } from 'react-bootstrap';
 import './App.css';
+import GitHubButton from 'react-github-btn';
 
 enum Result {
   NoResult = -1,
@@ -65,35 +66,36 @@ function App() {
         <div className="subtitle">
           Guess the HEX color!
         </div>
+        <div className="github-button">
+          <GitHubButton href="">Follow @arthurtc30</GitHubButton>
+        </div>
       </div>
       <div>
-        <div className="guess-me" style={{ backgroundColor: `#${color}` }}>
-          
-          </div>
-            {options.length ? 
-              <div className="options">
-                {options.map((o) => {
-                  return (
-                    <Button 
-                      variant="primary"
-                      onClick={() => {
-                        if (o === color) {
-                          setResult(1);
-                          setColor(getRandomColor());
-                          return;
-                        }
-    
-                        setResult(0);
-                      }}
-                    >
-                      #{o}
-                    </Button>
-                  )
-                })}
-              </div>
-            : (
-              <div className="options">Carregando...</div>
-            )}
+        <div className="guess-me" style={{ backgroundColor: `#${color}` }}></div>
+          {options.length ? 
+            <div className="options">
+              {options.map((o) => {
+                return (
+                  <Button 
+                    variant="primary"
+                    onClick={() => {
+                      if (o === color) {
+                        setResult(1);
+                        setColor(getRandomColor());
+                        return;
+                      }
+  
+                      setResult(0);
+                    }}
+                  >
+                    #{o}
+                  </Button>
+                )
+              })}
+            </div>
+          : (
+            <div className="options">Carregando...</div>
+          )}
         </div>
         <div className="result">
         {result !== -1 && (
