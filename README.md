@@ -2,6 +2,16 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## First steps
+
+### `nvm install`
+
+Installs the Node version specified in the .nvmrc file, in the project root.\
+
+### `nvm use`
+
+
+Uses the Node version specified in the .nvmrc file, in the project root.\
 ## Available Scripts
 
 In the project directory, you can run:
