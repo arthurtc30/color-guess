@@ -64,7 +64,7 @@ function App() {
           ColorGuess
         </div>
         <div className="subtitle">
-          Guess the HEX color!
+          Guess color by HEX code
         </div>
         <div className="github-button">
           <GitHubButton href="">Follow @arthurtc30</GitHubButton>
