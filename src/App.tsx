@@ -78,7 +78,7 @@ function App() {
           Guess the color by HEX code
         </div>
         <div className="github-button">
-          <GitHubButton href="">Follow @arthurtc30</GitHubButton>
+          <GitHubButton href="https://github.com/arthurtc30">Follow @arthurtc30</GitHubButton>
         </div>
       </div>
       <div className="scoreboard">
