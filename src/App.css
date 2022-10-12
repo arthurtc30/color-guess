@@ -19,6 +19,7 @@
 }
 
 .options {
+  margin-top: 10%;
   padding-top: 10px;
   padding-bottom: 10px;
   display: flex;
@@ -36,11 +37,15 @@
   width: 350px;
 }
 
-.right, .wrong {
+.correct, .wrong, .total {
   font-size: 24px;
 }
 
-.right {
+.total {
+  color: rgb(255, 163, 78)
+}
+
+.correct {
   color: rgb(80, 194, 99);
 }
 
@@ -74,4 +79,22 @@
 
 .subtitle {
   font-size: 22px;
+}
+
+.scoreboard {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 5%;
+}
+
+.scoreboard-results {
+  display: flex;
+  flex-direction: row;
+}
+
+.scoreboard-total, .scoreboard-text {
+  padding: 4px;
 }

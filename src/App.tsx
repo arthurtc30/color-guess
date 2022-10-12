@@ -7,13 +7,24 @@ import GitHubButton from 'react-github-btn';
 enum Result {
   NoResult = -1,
   Wrong = 0,
-  Right = 1
+  Correct = 1
+}
+
+interface Score {
+  total: number;
+  correct: number;
+  wrong: number;
 }
 
 function App() {
   const [color, setColor] = useState<string>("");
   const [options, setOptions] = useState<string[]>(new Array(3));
   const [result, setResult] = useState<Result>(Result.NoResult);
+  const [score, setScore] = useState<Score>({
+    total: 0,
+    correct: 0,
+    wrong: 0,
+  })
 
   function between(min: number, max: number) {  
     return Math.floor(
@@ -64,10 +75,23 @@ function App() {
           ColorGuess
         </div>
         <div className="subtitle">
-          Guess color by HEX code
+          Guess the color by HEX code
         </div>
         <div className="github-button">
           <GitHubButton href="">Follow @arthurtc30</GitHubButton>
+        </div>
+      </div>
+      <div className="scoreboard">
+        <div className="scoreboard-total total">
+          Total: {score.total}
+        </div>
+        <div className="scoreboard-results">
+          <div className="scoreboard-text correct">
+            Correct: {score.correct}
+          </div>
+          <div className="scoreboard-text wrong">
+            Wrong: {score.wrong}
+          </div>
         </div>
       </div>
       <div>
@@ -81,11 +105,22 @@ function App() {
                     onClick={() => {
                       if (o === color) {
                         setResult(1);
+                        setScore({
+                          ...score,
+                          total: score.total + 1,
+                          correct: score.correct + 1,
+                        })
                         setColor(getRandomColor());
                         return;
                       }
   
+                      setScore({
+                        ...score,
+                        total: score.total + 1,
+                        wrong: score.wrong + 1,
+                      })
                       setResult(0);
+                      setColor(getRandomColor());
                     }}
                   >
                     #{o}
@@ -94,15 +129,19 @@ function App() {
               })}
             </div>
           : (
-            <div className="options">Carregando...</div>
+            <div className="options">Loading...</div>
           )}
         </div>
         <div className="result">
         {result !== -1 && (
           result === 1 ? (
-            <span className="right">Right!</span>
+            <span>
+              <i className="correct">Correct!</i>
+            </span>
           ) : (
-            <span className="wrong">Wrong...</span>
+            <span>
+              <i className="wrong">Wrong...</i>
+            </span>
           ))}
       </div>
     </div>
